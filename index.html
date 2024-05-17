@@ -1,0 +1,727 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Menú Digital</title>
+
+    <style>
+  body {
+    font-family: 'TIMES NEW ROMAN', TIMES, SERIF; /* Cambio de fuente a mayúsculas */
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(135deg, rgba(255, 0, 0, 0.8) 0%, rgba(255, 165, 0, 0.8) 50%, rgba(255, 255, 0, 0.8) 100%);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+
+    #pedido-form {
+    background-color: rgba(255, 255, 255, 0.5);
+    padding: 20px;
+    margin: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  }
+
+  #pedido-form h2 {
+    text-align: center;
+    margin-top: 20px;
+    font-style: italic;
+    font-size: 28px;
+    color: #333;
+  }
+
+  #pedido-form label {
+    font-size: 16px;
+  }
+
+  #pedido-form input[type="text"],
+  #pedido-form select {
+    width: calc(100% - 16px); /* Ajustado para compensar el padding */
+    padding: 8px;
+    margin: 6px 0;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    resize: vertical;
+    font-family: 'TIMES NEW ROMAN', TIMES, SERIF;
+    font-style: italic;
+  }
+
+  #pedido-form button[type="submit"] {
+    background-color: #ff5722;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    width: calc(100% - 16px); /* Ajustado para compensar el padding */
+    margin-top: 10px; /* Añadido para separación */
+  }
+
+  #pedido-form button[type="submit"]:hover {
+    background-color: #f44336;
+  }
+  }
+
+  h1 {
+    text-align: center;
+    margin-top: 20px;
+    color: #333;
+    font-family: 'TIMES NEW ROMAN', TIMES, SERIF;
+    font-style: italic;
+    font-size: 28px; /* Tamaño de letra personalizado */
+  }
+
+  .menu-section {
+    margin-top: 30px;
+  }
+
+  .menu-item {
+    background-color: rgba(255, 255, 255, 0.5);
+    padding: 20px;
+    margin: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    display: flex;
+    align-items: center;
+  }
+
+  button {
+    background-color: #ff5722;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+
+  button:hover {
+    background-color: #f44336;
+  }
+
+  #carrito {
+    background-color: rgba(255, 255, 255, 0.5);
+    padding: 20px;
+    margin: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  }
+
+  ul {
+    list-style-type: none;
+    padding: 0;
+  }
+
+  li {
+    margin-bottom: 10px;
+    font-size: 16px;
+  }
+
+  #compartir {
+    background-color: #4caf50;
+    margin-top: 20px;
+  }
+
+  #compartir:hover {
+    background-color: #388e3c;
+  }
+
+  /* Crédito */
+  #credit {
+    position: fixed;
+    bottom: 10px;
+    left: 10px;
+    background-color: #333;
+    color: #fff;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 12px;
+  }
+
+  /* Estilos para los campos de entrada */
+  input[type="text"],
+  input[type="number"],
+  select {
+    width: 100%;
+    padding: 8px;
+    margin: 6px 0;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    resize: vertical;
+    font-family: 'TIMES NEW ROMAN', TIMES, SERIF; /* Cambio de fuente */
+    font-style: italic; /* Cursiva *
+
+/* Estilos para la imagen en la esquina inferior derecha */
+.corner-image-container {
+  position: relative;
+}
+
+.corner-image-container img {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 10px; /* Ajusta el tamaño según sea necesario */
+  height: 10px; /* Ajusta el tamaño según sea necesario */
+}
+
+</style>
+
+<body>
+  <h1>¡ BIENVENIDO AL MALECON FAST FOOD !
+       <div class="background-image left-image"></div>
+    <div class="background-image right-image"></div></h1>
+
+<div id="pedido-form">
+    <h2>Realiza tu Pedido</h2>
+    <form id="pedido-formulario">
+      <label for="nombre">NOMBRE:</label>
+      <input type="text" id="nombre" name="nombre" required><br><br>
+      <label for="direccion">DIRRECCION DE ENVIO:</label>
+      <input type="text" id="direccion" name="direccion" required><br><br>
+      <label for="metodo-pago">METODO DE PAGO:</label>
+      <select id="metodo-pago" name="metodo-pago" required>
+        <option></option>
+        <option value="Nequi">Nequi</option>
+        <option value="DaviPlata">DaviPlata</option>
+        <option value="Bancolombia">Bancolombia</option>
+      </select><br><br>
+       <div id="mensaje-obligatorio">
+      !!OBLIGATORIO¡¡ cancelar el pedido y enviar comprobante para seguridad del mensajero y seguridad del cliente😉. GRACIAS POR PREFERIR MALECON FAST FOOD❤
+    </div>
+      <button type="submit">Realizar Pedido</button>
+    </form>
+
+  </div>
+  </body>
+
+
+
+<body>
+  <h1>¡ ENTRADA!</h1>
+  <div class="menu-item">
+  <div>
+    <!-- Contenedor de la imagen en la esquina inferior derecha -->
+    <div class="corner-image-container">
+      <!-- Imagen en la esquina inferior derecha -->
+      <img src="https://i.ibb.co/K6TmVr8/Screenshot-2024-05-07-15-05-22-996-com-google-android-apps-docs-edit.jpg" alt="logo">
+    </div>
+    <!-- Contenido del producto -->
+    <h3>PALITOS DE QUESO </h3>
+    <p> 4 palitos de queso mozarella apanados acompañados de salsas </p>
+    <p>$12,000 COP</p>
+    <button onclick="agregarAlCarrito('Palitos de Queso', 12000)">Agregar al Carrito</button>
+  </div>
+</div>
+    <div class="menu-item">
+      <div>
+<!-- Contenedor de la imagen en la esquina inferior derecha -->
+    <div class="corner-image-container">
+      <!-- Imagen en la esquina inferior derecha -->
+      <img src="https://i.ibb.co/K6TmVr8/Screenshot-2024-05-07-15-05-22-996-com-google-android-apps-docs-edit.jpg" alt="logo">
+    </div>
+        <h3>BACON FRIES</h3>
+        <p>Papas a la francesa con
+          tocineta y queso cheddar
+        </p>
+        <p>$15,000 COP</p>
+        <button onclick="agregarAlCarrito('Bacon Fries', 15000)">Agregar al Carrito</button>
+      </div>
+    </div>
+    <div class="menu-item">
+      <div>
+        <!-- Contenedor de la imagen en la esquina inferior derecha -->
+    <div class="corner-image-container">
+      <!-- Imagen en la esquina inferior derecha -->
+      <img src="https://i.ibb.co/K6TmVr8/Screenshot-2024-05-07-15-05-22-996-com-google-android-apps-docs-edit.jpg" alt="logo">
+    </div>
+        <h3>MAZORQUITAS MEXICANAS</h3>
+        <p> Mazorquitas dulces a la parrilla
+        bañadas en salsa chiplote y queso
+      rallado</p>
+        <p>$16,000 COP</p>
+        <button onclick="agregarAlCarrito('Mazorquitas Mexicanas', 16000)">Agregar al Carrito</button>
+      </div>
+    </div>
+
+      <div class="menu-item">
+      <div>
+        <!-- Contenedor de la imagen en la esquina inferior derecha -->
+    <div class="corner-image-container">
+      <!-- Imagen en la esquina inferior derecha -->
+      <img src="https://i.ibb.co/K6TmVr8/Screenshot-2024-05-07-15-05-22-996-com-google-android-apps-docs-edit.jpg" alt="logo">
+    </div>
+        <h3>MINIBURGES</h3>
+        <p> 3 pequeñas muestras de nuestras hamburguesas </p>
+        <p>$22,000 COP</p>
+        <button onclick="agregarAlCarrito('MiniBurges', 22000)">Agregar al Carrito</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="menu-section">
+      <h1>¡ PERROS!</h1>
+    <div class="menu-item">
+      <div>
+        <!-- Contenedor de la imagen en la esquina inferior derecha -->
+    <div class="corner-image-container">
+      <!-- Imagen en la esquina inferior derecha -->
+      <img src="https://i.ibb.co/K6TmVr8/Screenshot-2024-05-07-15-05-22-996-com-google-android-apps-docs-edit.jpg" alt="logo">
+    </div>
+        <h3> PERROS SENCIILOS </h3>
+        <p> Pan artesanal, lechuga, queso costeño y
+papitas ripio acompañado de papas a la
+francesa </p>
+        <p>$12,000 COP</p>
+        <button onclick="agregarAlCarrito('Perros Senciilo', 12000)">Agregar al Carrito</button>
+      </div>
+    </div>
+    <div class="menu-item">
+      <div>
+        <!-- Contenedor de la imagen en la esquina inferior derecha -->
+    <div class="corner-image-container">
+      <!-- Imagen en la esquina inferior derecha -->
+      <img src="https://i.ibb.co/K6TmVr8/Screenshot-2024-05-07-15-05-22-996-com-google-android-apps-docs-edit.jpg" alt="logo">
+    </div>
+        <h3> PERROS MALECON </h3>
+        <p>Pan artesanal, salchicha americana, picadillo
+de chicharrón, picadillo de verduras, papitas
+ripio, salsa de la casa, queso mozarella y salsa
+de piña acompañado de papas a la francesa </p>
+        <p>$20,000 COP</p>
+        <button onclick="agregarAlCarrito('Perros Malecon', 20000)">Agregar al Carrito</button>
+      </div>
+    </div>
+    <div class="menu-item">
+      <div>
+        <!-- Contenedor de la imagen en la esquina inferior derecha -->
+    <div class="corner-image-container">
+      <!-- Imagen en la esquina inferior derecha -->
+      <img src="https://i.ibb.co/K6TmVr8/Screenshot-2024-05-07-15-05-22-996-com-google-android-apps-docs-edit.jpg" alt="logo">
+    </div>
+        <h3>PERROS SUIZOS </h3>
+        <p> Pan artesanal, salchicha suiza, lechuga,
+cebolla, tocineta, queso mozarella, papitas
+ripio y salsas acompañado de papas a la
+francesa</p>
+        <p>$18,000 COP</p>
+        <button onclick="agregarAlCarrito('Perro Suizo', 18000)">Agregar al Carrito</button>
+      </div>
+    </div>
+        <div class="menu-item">
+      <div>
+        <!-- Contenedor de la imagen en la esquina inferior derecha -->
+    <div class="corner-image-container">
+      <!-- Imagen en la esquina inferior derecha -->
+      <img src="https://i.ibb.co/K6TmVr8/Screenshot-2024-05-07-15-05-22-996-com-google-android-apps-docs-edit.jpg" alt="logo">
+    </div>
+        <h3>PEPITO CARAQUEÑO </h3>
+        <p> Pan artesanal, pollo, lomito de cerdo, maíz
+tierno, tocineta, queso mozarella, lechuga,
+tomate, papitas ripio y salsa de la casa
+acompañado de papas a la francesa
+</p>
+        <p>$30,000 COP</p>
+        <button onclick="agregarAlCarrito('Pepito Caraqueño', 30000)">Agregar al Carrito</button>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="
+menu-section">
+  <h1>¡ PIZZA!</h1>
+    <div class="menu-item">
+      <div>
+        <!-- Contenedor de la imagen en la esquina inferior derecha -->
+    <div class="corner-image-container">
+      <!-- Imagen en la esquina inferior derecha -->
+      <img src="https://i.ibb.co/K6TmVr8/Screenshot-2024-05-07-15-05-22-996-com-google-android-apps-docs-edit.jpg" alt="logo">
+    </div>
+        <h3>ITALIAN PIZZA </h3>
+        <p> Queso mozarella, salami y
+oregano
+</p>
+        <p>$25,000 COP</p>
+        <button onclick="agregarAlCarrito('Italian Pizza', 25000)">Agregar al Carrito</button>
+      </div>
+    </div>
+    <div class="menu-item">
+      <div>
+        <!-- Contenedor de la imagen en la esquina inferior derecha -->
+    <div class="corner-image-container">
+      <!-- Imagen en la esquina inferior derecha -->
+      <img src="https://i.ibb.co/K6TmVr8/Screenshot-2024-05-07-15-05-22-996-com-google-android-apps-docs-edit.jpg" alt="logo">
+    </div>
+        <h3>PIZZA WEY </h3>
+        <p> Carne molida, verduras salteadas y
+picante </p>
+        <p>$28,000 COP</p>
+        <button onclick="agregarAlCarrito('Pizza Wey ', 28000)">Agregar al Carrito</button>
+      </div>
+    </div>
+    <div class="menu-item">
+      <div>
+        <!-- Contenedor de la imagen en la esquina inferior derecha -->
+    <div class="corner-image-container">
+      <!-- Imagen en la esquina inferior derecha -->
+      <img src="https://i.ibb.co/K6TmVr8/Screenshot-2024-05-07-15-05-22-996-com-google-android-apps-docs-edit.jpg" alt="logo">
+    </div>
+        <h3> CAMARON PIZZA </h3>
+        <p> Camarones, queso mozarella y
+salsa de ajo</p>
+        <p>$30,000 COP</p>
+        <button onclick="agregarAlCarrito('Camaron Pizza', 30000)">Agregar al Carrito</button>
+      </div>
+    </div>
+        <div class="menu-item">
+      <div>
+        <!-- Contenedor de la imagen en la esquina inferior derecha -->
+    <div class="corner-image-container">
+      <!-- Imagen en la esquina inferior derecha -->
+      <img src="https://i.ibb.co/K6TmVr8/Screenshot-2024-05-07-15-05-22-996-com-google-android-apps-docs-edit.jpg" alt="logo">
+    </div>
+        <h3> PIZZA HAWAIANA </h3>
+        <p> Jamón, piña y queso
+</p>
+        <p>$25,000 COP</p>
+        <button onclick="agregarAlCarrito('Pizza Hawaiana', 25000)">Agregar al Carrito</button>
+      </div>
+    </div>
+        <div class="menu-item">
+      <div>
+        <!-- Contenedor de la imagen en la esquina inferior derecha -->
+    <div class="corner-image-container">
+      <!-- Imagen en la esquina inferior derecha -->
+      <img src="https://i.ibb.co/K6TmVr8/Screenshot-2024-05-07-15-05-22-996-com-google-android-apps-docs-edit.jpg" alt="logo">
+    </div>
+        <h3> POLLO & CHAMPIÑONES  </h3>
+        <p>$27,000 COP</p>
+        <button onclick="agregarAlCarrito('Pollo & Champiñones', 27000)">Agregar al Carrito</button>
+      </div>
+    </div>
+        <div class="menu-item">
+      <div>
+        <!-- Contenedor de la imagen en la esquina inferior derecha -->
+    <div class="corner-image-container">
+      <!-- Imagen en la esquina inferior derecha -->
+      <img src="https://i.ibb.co/K6TmVr8/Screenshot-2024-05-07-15-05-22-996-com-google-android-apps-docs-edit.jpg" alt="logo">
+    </div>
+        <h3> CHORIPIZZA </h3>
+        <p>$28,000 COP</p>
+        <button onclick="agregarAlCarrito('Choripizza', 28000)">Agregar al Carrito</button>
+      </div>
+    </div>
+  </div>
+
+
+
+  <div class="menu-section">
+      <h1>¡ HAMBURGUESA!</h1>
+    <div class="menu-item">
+      <div>
+        <!-- Contenedor de la imagen en la esquina inferior derecha -->
+    <div class="corner-image-container">
+      <!-- Imagen en la esquina inferior derecha -->
+      <img src="https://i.ibb.co/K6TmVr8/Screenshot-2024-05-07-15-05-22-996-com-google-android-apps-docs-edit.jpg" alt="logo">
+    </div>
+        <h3>PATACON BURGER</h3>
+        <p> 120 gr de carne de hambruguesa, tajada
+amarilla, queso costeño, tocineta y salsa de la
+casa acompañado de papas a la francesa </p>
+        <p>$22,000 COP</p>
+        <button onclick="agregarAlCarrito('Patacon Burguer', 22000)">Agregar al Carrito</button>
+      </div>
+    </div>
+    <div class="menu-item">
+      <div>
+        <!-- Contenedor de la imagen en la esquina inferior derecha -->
+    <div class="corner-image-container">
+      <!-- Imagen en la esquina inferior derecha -->
+      <img src="https://i.ibb.co/K6TmVr8/Screenshot-2024-05-07-15-05-22-996-com-google-android-apps-docs-edit.jpg" alt="logo">
+    </div>
+        <h3>BURGER TRADICIONAL</h3>
+        <p> Pan tipo brioche, 120 gr de carne de res o pollo,
+tocineta, queso mozarella, cebolla apanada,
+lechuga, tomate, salsa BBQ y tartara
+acompañado de papas a la francesa</p>
+        <p>$25,000 COP</p>
+        <button onclick="agregarAlCarrito('Burguer Tradicional', 25000)">Agregar al Carrito</button>
+      </div>
+    </div>
+    <div class="menu-item">
+      <div>
+        <!-- Contenedor de la imagen en la esquina inferior derecha -->
+    <div class="corner-image-container">
+      <!-- Imagen en la esquina inferior derecha -->
+      <img src="https://i.ibb.co/K6TmVr8/Screenshot-2024-05-07-15-05-22-996-com-google-android-apps-docs-edit.jpg" alt="logo">
+    </div>
+        <h3>BURGER DOBLE CARNE</h3>
+        <p> Pan tipo brioche, 200 gr de carne de res, aros
+de cebolla caramelizados, tocineta, queso
+mozarella, lechuga, tomate y salsa de la casa
+acompañado de papas a la francesa
+</p>
+        <p>$28,000 COP</p>
+        <button onclick="agregarAlCarrito('Burguer Doble Carne', 280000)">Agregar al Carrito</button>
+      </div>
+    </div>
+        <div class="menu-item">
+      <div>
+        <!-- Contenedor de la imagen en la esquina inferior derecha -->
+    <div class="corner-image-container">
+      <!-- Imagen en la esquina inferior derecha -->
+      <img src="https://i.ibb.co/K6TmVr8/Screenshot-2024-05-07-15-05-22-996-com-google-android-apps-docs-edit.jpg" alt="logo">
+    </div>
+        <h3>BURGER CAMARON </h3>
+        <p> Pan tipo brioche, 120 gr de camaron, aros de
+cebolla apanados, tocineta, queso cheddar,
+lechuga, tomate y salsa de la casa
+acompañado de papas a la francesa
+</p>
+        <p>$30,000 COP</p>
+        <button onclick="agregarAlCarrito('Burguer Camaron', 30000)">Agregar al Carrito</button>
+      </div>
+    </div>
+        <div class="menu-item">
+      <div>
+        <!-- Contenedor de la imagen en la esquina inferior derecha -->
+    <div class="corner-image-container">
+      <!-- Imagen en la esquina inferior derecha -->
+      <img src="https://i.ibb.co/K6TmVr8/Screenshot-2024-05-07-15-05-22-996-com-google-android-apps-docs-edit.jpg" alt="logo">
+    </div>
+        <h3>BURGER MALECON</h3>
+        <p> Pan tipo brioche, 120 gr de carne de res,
+guacamole, chicharrón crocante, chorizo
+antioqueño, queso costeño asado, lechuga
+crespa, cebolla roja y salsa mexicana
+acompañado de papas a la francesa</p>
+        <p>$35,000 COP</p>
+        <button onclick="agregarAlCarrito('Burguer Malecon', 35000)">Agregar al Carrito</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="menu-section">
+      <h1>¡DESGRANADOS!</h1>
+    <div class="menu-item">
+      <div>
+        <!-- Contenedor de la imagen en la esquina inferior derecha -->
+    <div class="corner-image-container">
+      <!-- Imagen en la esquina inferior derecha -->
+      <img src="https://i.ibb.co/K6TmVr8/Screenshot-2024-05-07-15-05-22-996-com-google-android-apps-docs-edit.jpg" alt="logo">
+    </div>
+        <h3>MEZCLADITO </h3>
+        <p> Maíz tierno, chicharrón, chorizo,, lomito de
+cerdo, queso mozarella, papitas ripio y salsa de
+la casa
+ </p>
+        <p>$26,000 COP</p>
+        <button onclick="agregarAlCarrito('Mezcladito', 26000)">Agregar al Carrito</button>
+      </div>
+    </div>
+    <div class="menu-item">
+      <div>
+        <!-- Contenedor de la imagen en la esquina inferior derecha -->
+    <div class="corner-image-container">
+      <!-- Imagen en la esquina inferior derecha -->
+      <img src="https://i.ibb.co/K6TmVr8/Screenshot-2024-05-07-15-05-22-996-com-google-android-apps-docs-edit.jpg" alt="logo">
+    </div>
+        <h3>DESGRANADO POLLO O CARNE</h3>
+        <p> Maíz tierno, pollo o carne desmechada,
+tocineta, queso mozarella, papitas ripio y
+salsa de la casa </p>
+        <p>$20,000 COP</p>
+        <button onclick="agregarAlCarrito('Desgranado Pollo o Carne', 20000)">Agregar al Carrito</button>
+      </div>
+    </div>
+  </div>
+
+    <div class="menu-section">
+        <h1>¡SALCHIPAPAS!</h1>
+    <div class="menu-item">
+      <div>
+        <!-- Contenedor de la imagen en la esquina inferior derecha -->
+    <div class="corner-image-container">
+      <!-- Imagen en la esquina inferior derecha -->
+      <img src="https://i.ibb.co/K6TmVr8/Screenshot-2024-05-07-15-05-22-996-com-google-android-apps-docs-edit.jpg" alt="logo">
+    </div>
+        <h3>SACHIPAPA PERSONAL  </h3>
+        <p>200 gr de papa, chorizo, butifarra, queso
+costeño rallado, maíz tierno, papitas ripio,
+lechuga y salsa de la casa </p>
+        <p>$20,000 COP</p>
+        <button onclick="agregarAlCarrito('Salchipapa Personal', 20000)">Agregar al Carrito</button>
+      </div>
+    </div>
+    <div class="menu-item">
+      <div>
+        <!-- Contenedor de la imagen en la esquina inferior derecha -->
+    <div class="corner-image-container">
+      <!-- Imagen en la esquina inferior derecha -->
+      <img src="https://i.ibb.co/K6TmVr8/Screenshot-2024-05-07-15-05-22-996-com-google-android-apps-docs-edit.jpg" alt="logo">
+    </div>
+        <h3>SALCHIPAPA MALECON</h3>
+        <p> 200 gr de papa, salchicha ranchera, carne
+desmechada, pollo, lechuga, picadillo de
+verduras, maíz tierno, queso costeño asado y
+papapitas ripio </p>
+        <p>$28,000 COP</p>
+        <button onclick="agregarAlCarrito('Salchipapa Malecon', 28000)">Agregar al Carrito</button>
+      </div>
+    </div>
+  </div>
+  <div class="menu-item">
+      <div>
+        <!-- Contenedor de la imagen en la esquina inferior derecha -->
+    <div class="corner-image-container">
+      <!-- Imagen en la esquina inferior derecha -->
+      <img src="https://i.ibb.co/K6TmVr8/Screenshot-2024-05-07-15-05-22-996-com-google-android-apps-docs-edit.jpg" alt="logo">
+    </div>
+        <h3>SALCHIPAPA LA GORDITA</h3>
+        <p> 200 gr de papa, chicharrón, chorizo artesanal,
+maíz tierno, picadillo de verduras, lechuga,
+queso gratinado y salsa de la casa</p>
+        <p>$25,000 COP</p>
+        <button onclick="agregarAlCarrito('Salchipapa La Gordita', 25000)">Agregar al Carrito</button>
+      </div>
+    </div>
+
+
+  <div class="menu-section">
+      <h1>¡ADICIONALES!</h1>
+    <div class="menu-item">
+      <div>
+        <!-- Contenedor de la imagen en la esquina inferior derecha -->
+    <div class="corner-image-container">
+      <!-- Imagen en la esquina inferior derecha -->
+      <img src="https://i.ibb.co/K6TmVr8/Screenshot-2024-05-07-15-05-22-996-com-google-android-apps-docs-edit.jpg" alt="logo">
+    </div>
+        <h3>BORDE DE QUESO </h3>
+        <p>$8,000 COP</p>
+        <button onclick="agregarAlCarrito('Borde De Queso', 8000)">Agregar al Carrito</button>
+      </div>
+    </div>
+    <div class="menu-item">
+      <div>
+        <!-- Contenedor de la imagen en la esquina inferior derecha -->
+    <div class="corner-image-container">
+      <!-- Imagen en la esquina inferior derecha -->
+      <img src="https://i.ibb.co/K6TmVr8/Screenshot-2024-05-07-15-05-22-996-com-google-android-apps-docs-edit.jpg" alt="logo">
+    </div>
+        <h3>QUESO CHEDDAR</h3>
+        <p>$5,000 COP</p>
+        <button onclick="agregarAlCarrito('Queso Cheddar', 5000)">Agregar al Carrito</button>
+      </div>
+    </div>
+    <div class="menu-item">
+      <div>
+        <!-- Contenedor de la imagen en la esquina inferior derecha -->
+    <div class="corner-image-container">
+      <!-- Imagen en la esquina inferior derecha -->
+      <img src="https://i.ibb.co/K6TmVr8/Screenshot-2024-05-07-15-05-22-996-com-google-android-apps-docs-edit.jpg" alt="logo">
+    </div>
+        <h3>PORCION DE PAPAS</h3>
+        <p>$6,000 COP</p>
+        <button onclick="agregarAlCarrito('Porcion De Papas', 6000)">Agregar al Carrito</button>
+      </div>
+    </div>
+    <div class="menu-item">
+      <div>
+        <!-- Contenedor de la imagen en la esquina inferior derecha -->
+    <div class="corner-image-container">
+      <!-- Imagen en la esquina inferior derecha -->
+      <img src="https://i.ibb.co/K6TmVr8/Screenshot-2024-05-07-15-05-22-996-com-google-android-apps-docs-edit.jpg" alt="logo">
+    </div>
+        <h3>TOCINETA</h3>
+        <p>$5,000 COP</p>
+        <button onclick="agregarAlCarrito('Tocineta', 5000)">Agregar al Carrito</button>
+      </div>
+    </div>
+  </div>
+
+<div id="carrito">
+    <h2>Carrito de Compras</h2>
+    <ul id="lista-pedidos"></ul>
+    <p>Total: <span id="total-pedido">0</span> COP</p>
+    <div id="datos-cliente">
+      <h3>Datos del Cliente</h3>
+      <p id="nombre-cliente"></p>
+      <p id="direccion-cliente"></p>
+      <p id="contacto-cliente"></p>
+      <p id="metodo-pago"></p>
+      <p id="num-mesa"></p>
+    </div>
+    <button id="compartir" onclick="compartirWhatsApp()">Compartir en WhatsApp</button>
+  </div>
+
+
+  <!-- Crédito -->
+  <div id="credit">DISEÑOS JHPG </div>
+
+  <script>
+    var totalPedido = 0;
+
+    function eliminarDelCarrito(index, precio) {
+      var listaPedidos = document.getElementById('lista-pedidos');
+      var removedItem = listaPedidos.removeChild(listaPedidos.children[index]);
+      totalPedido -= precio;
+      document.getElementById('total-pedido').textContent = totalPedido.toLocaleString() + " COP";
+    }
+
+    function agregarAlCarrito(platillo, precio) {
+      var listaPedidos = document.getElementById('lista-pedidos');
+      var nuevoPedido = document.createElement('li');
+      nuevoPedido.textContent = platillo + " - $" + precio.toLocaleString() + " COP";
+
+      var botonEliminar = document.createElement('button');
+      botonEliminar.textContent = "Eliminar";
+      botonEliminar.onclick = function() {
+        eliminarDelCarrito(Array.from(listaPedidos.children).indexOf(nuevoPedido), precio);
+      };
+
+      nuevoPedido.appendChild(botonEliminar);
+      listaPedidos.appendChild(nuevoPedido);
+      totalPedido += precio;
+      document.getElementById('total-pedido').textContent = totalPedido.toLocaleString() + " COP";
+    }
+
+     function compartirWhatsApp() {
+      var listaPedidos = document.getElementById('lista-pedidos');
+      var nombre = document.getElementById('nombre').value;
+      var direccion = document.getElementById('direccion').value;
+      var metodoPago = document.getElementById('metodo-pago').value;
+      var textoPedido = "Pedido de " + nombre + ":\n";
+      textoPedido += "Dirección: " + direccion + "\n";
+      textoPedido += "Método de Pago: " + metodoPago + "\n\n";
+      textoPedido += "Detalle del Pedido:\n";
+      for (var i = 0; i < listaPedidos.children.length; i++) {
+        textoPedido += "- " + listaPedidos.children[i].textContent + "\n";
+      }
+      textoPedido += "\nTotal: $" + totalPedido.toLocaleString() + " COP";
+      var url = "https://api.whatsapp.com/send?text=" + encodeURIComponent(textoPedido);
+      window.open(url, '_blank');
+    }
+
+    document.getElementById('pedido-formulario').addEventListener('submit', function(event) {
+      event.preventDefault();
+      // Aquí puedes agregar la lógica para procesar el pedido (guardar en una base de datos, enviar por correo electrónico, etc.)
+      // Por ahora, vamos a mostrar una alerta con los detalles del pedido
+      var nombre = document.getElementById('nombre').value;
+      var direccion = document.getElementById('direccion').value;
+      var metodoPago = document.getElementById('metodo-pago').value;
+      alert("Pedido realizado por: " + nombre + "\nDirección: " + direccion + "\nMétodo de Pago: " + metodoPago);
+      // Limpia el carrito y reinicia el total del pedido
+      document.getElementById('lista-pedidos').innerHTML = "";
+      totalPedido = 0;
+      document.getElementById('total-pedido').textContent = totalPedido.toLocaleString();
+    });
+  </script>
+
+
+  </script>
+ </body>
+</html>
